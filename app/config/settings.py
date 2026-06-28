@@ -6,6 +6,8 @@ This module is responsible for:
 1. Loading environment variables
 2. Centralizing application configuration
 3. Preventing hardcoded secrets
+
+sqlite:///event_management.db
 """
 
 from pathlib import Path
@@ -43,11 +45,12 @@ GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 # Database
 # ----------------------------------------------------
 
-DATABASE_URL = os.getenv(
-    "DATABASE_URL",
-    "sqlite:///event_management.db"
-)
+DATABASE_URL = os.getenv("DATABASE_URL")
 
+if DATABASE_URL is None:
+    raise ValueError(
+        "DATABASE_URL not found in .env"
+    )
 # ----------------------------------------------------
 # Email
 # ----------------------------------------------------
