@@ -181,6 +181,12 @@ class Booking(Base):
     # String Representation
     # ----------------------------------------
 
+    payments = relationship(
+        "Payment",
+        back_populates="booking",
+        cascade="all, delete-orphan"
+    )
+
     def __repr__(self):
 
         return (
