@@ -7,7 +7,8 @@ Creates all database tables.
 from app.database.connection import create_database
 
 # Import models so SQLAlchemy knows about them
-from app.database import models  # noqa: F401
+  # noqa: F401
+from app.database.models import Customer
 
 
 def initialize_database():
@@ -16,4 +17,5 @@ def initialize_database():
 
 
 if __name__ == "__main__":
-    initialize_database()
+    create_database()
+    print("Database initialized successfully.")
