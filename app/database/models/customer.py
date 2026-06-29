@@ -4,14 +4,23 @@ Database Models
 Contains all database tables.
 """
 
+from __future__ import annotations
+
 from datetime import datetime
-from sqlalchemy.sql import func
+from typing import TYPE_CHECKING
 
 from sqlalchemy import String, DateTime
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.sql import func
+from sqlalchemy.orm import (
+    Mapped,
+    mapped_column,
+    relationship,
+)
 
 from app.database.base import Base
 
+if TYPE_CHECKING:
+    from app.database.models.booking import Booking
 
 class Customer(Base):
     """
@@ -54,6 +63,12 @@ class Customer(Base):
     server_default=func.now(),
     onupdate=func.now()
     )
+
+    bookings: Mapped[list["Booking"]] = relationship(
+        "Booking",
+        back_populates="customer",
+        cascade="all, delete-orphan",
+   )
 
     def __repr__(self) -> str:
         return (

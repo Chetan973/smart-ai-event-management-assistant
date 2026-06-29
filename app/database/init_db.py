@@ -5,17 +5,13 @@ Creates all database tables.
 """
 
 from app.database.connection import create_database
-
-# Import models so SQLAlchemy knows about them
-  # noqa: F401
-from app.database.models import Customer
+import app.database.models
 
 
-def initialize_database():
+def initialize_database() -> None:
     create_database()
     print("Database initialized successfully.")
 
 
 if __name__ == "__main__":
-    create_database()
-    print("Database initialized successfully.")
+    initialize_database()
