@@ -26,6 +26,7 @@ class BookingService:
         self,
         booking: Booking
     ) -> Booking:
+        booking.booking_status = "PENDING"
 
         return self.repository.create(booking)
 

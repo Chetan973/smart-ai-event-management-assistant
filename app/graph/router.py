@@ -17,10 +17,10 @@ def router(state: EventState) -> str:
     if intent == "BOOK_EVENT":
         return "booking"
 
-    elif intent == "FAQ":
+    if intent == "FAQ":
         return "faq"
 
-    elif intent == "PAYMENT":
+    if intent == "PAYMENT":
         return "payment"
 
     return "planner"

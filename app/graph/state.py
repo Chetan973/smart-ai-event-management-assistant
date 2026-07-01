@@ -10,42 +10,65 @@ from typing import Any
 
 class EventState(TypedDict, total=False):
 
+    # -------------------------------------
+    # User Input
+    # -------------------------------------
+
     user_input: str
 
+    # -------------------------------------
+    # AI Planner
+    # -------------------------------------
+
     intent: str
-
-    customer_name: str
-
-    customer_email: str
-
-    customer_phone: str
-
-    event_name: str
-
-    event_type: str
-
-    event_date: str
-
-    guest_count: int
-
-    venue: str
-
-    food_preference: str
-
-    decoration_theme: str
-
-    budget: float
-
     planner_response: dict[str, Any]
 
-    booking_response: str
+    # -------------------------------------
+    # Customer Details
+    # -------------------------------------
 
-    payment_response: str
+    customer_name: str
+    customer_email: str
+    customer_phone: str
+    customer_id: int
 
-    email_response: str
+    # -------------------------------------
+    # Event Details
+    # -------------------------------------
 
-    final_response: str
-    
+    event_name: str
+    event_type: str
+    event_date: str
+    start_time: str
+    end_time: str
+    guest_count: int
+    venue: str
+    venue_address: str
     city: str
+    food_preference: str
+    decoration_theme: str
+    estimated_budget: float
+
+    # -------------------------------------
+    # Booking
+    # -------------------------------------
+
+    booking_id: int
+    approval_status: str
+
+    # -------------------------------------
+    # Conversation
+    # -------------------------------------
 
     missing_fields: list[str]
+    current_field: str
+    next_step: str
+
+    # -------------------------------------
+    # Agent Responses
+    # -------------------------------------
+
+    booking_response: str
+    payment_response: str
+    email_response: str
+    final_response: str
